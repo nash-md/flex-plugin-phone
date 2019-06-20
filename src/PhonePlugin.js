@@ -23,7 +23,7 @@ export default class PhonePlugin extends FlexPlugin {
 
   init(flex, manager) {
     const runtimeDomain = manager.serviceConfiguration.runtime_domain;
-    const identity = manager.store.getState().flex.session.identity;
+    const identity = manager.store.getState().flex.worker.attributes.contact_uri.replace('client:', '');
     const fullName = manager.store.getState().flex.worker.attributes.full_name;
     const token = manager.store.getState().flex.session.ssoTokenPayload.token;
 

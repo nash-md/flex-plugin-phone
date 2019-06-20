@@ -24,7 +24,7 @@ class PhoneCanvas extends React.Component {
     this.props.insightsClient.instantQuery("tr-worker").then(q => {
       q.on("searchResult", items => {
         const list = Object.values(items).filter(
-          worker => worker.friendly_name !== this.props.identity
+          worker => worker.attributes.contact_uri.replace('client:', '') !== this.props.identity
         );
 
         this.setState({ workers: list });
@@ -56,7 +56,6 @@ class PhoneCanvas extends React.Component {
     const isNumberExpression = /^\d+$/g;
 
     if (isNumberExpression.test(value)) {
-      console.log("add prefix");
       value = `+${value}`;
     }
 
@@ -72,14 +71,14 @@ class PhoneCanvas extends React.Component {
       isFriendlyName: true
     });
   };
-
+  
   getWorkerByFriendlyName(name) {
     const values = this.state.workers.filter(worker => {
       return worker.attributes.full_name === name;
     });
-    return values[0].friendly_name;
+    return values[0].attributes.contact_uri.replace('client:', '');
   }
-
+  
   addDigit = digit => {
     if (this.state.isFriendlyName) {
       this.setState(
