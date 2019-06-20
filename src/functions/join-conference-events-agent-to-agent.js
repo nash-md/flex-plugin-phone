@@ -45,12 +45,12 @@ const createTask = (client, context, taskSid, to, from, name) => {
         name: name,
         from: from,
         contact_uri: `client:${to}`,
-        autoAnswer: true,
+        autoAnswer: false,
         parentTaskSid: taskSid
       }),
       workflowSid: context.TWILIO_WORKFLOW_SID,
       taskChannel: "custom1",
-      timeout: 300
+      timeout: 30
     });
 };
 
