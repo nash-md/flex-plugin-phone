@@ -33,7 +33,7 @@ class DialPadButton extends React.Component {
       >
         <div className={this.classes.button}>
           <Typography component="h5" variant="h5"> {this.props.number}</Typography>
-          <Typography className={this.classes.subtitle} variant="subtitle2" color="textSecondary">
+          <Typography className={this.classes.subtitle} variant="subtitle" color="textSecondary">
             {this.props.letters}
           </Typography>
         </div>

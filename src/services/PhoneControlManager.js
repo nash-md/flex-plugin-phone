@@ -6,10 +6,10 @@ function handleErrors(response) {
 }
 
 export class PhoneControlManager {
-  constructor(runtimeDomain, token, identity, fullName) {
+  constructor(runtimeDomain, token, contactUri, fullName) {
     this.runtimeDomain = runtimeDomain;
     this.token = token;
-    this.identity = identity;
+    this.contactUri = contactUri;
     this.fullName = fullName;
   }
 
@@ -19,7 +19,7 @@ export class PhoneControlManager {
         "Content-Type": "application/x-www-form-urlencoded"
       },
       method: "POST",
-      body: `Name=${encodeURIComponent(this.fullName)}&From=${encodeURIComponent(this.identity)}&To=${encodeURIComponent(to)}&Token=${this.token}`
+      body: `Name=${encodeURIComponent(this.fullName)}&From=${encodeURIComponent(this.contactUri)}&To=${encodeURIComponent(to)}&Token=${this.token}`
     })
       .then(response => {
         if (response.ok) {

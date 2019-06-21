@@ -24,7 +24,7 @@ class PhoneCanvas extends React.Component {
     this.props.insightsClient.instantQuery("tr-worker").then(q => {
       q.on("searchResult", items => {
         const list = Object.values(items).filter(
-          worker => worker.attributes.contact_uri.replace('client:', '') !== this.props.identity
+          worker => worker.attributes.contact_uri !== this.props.contactUri
         );
 
         this.setState({ workers: list });
@@ -72,7 +72,7 @@ class PhoneCanvas extends React.Component {
     });
   };
   
-  getWorkerByFriendlyName(name) {
+  getCallerIdByFriendlyName(name) {
     const values = this.state.workers.filter(worker => {
       return worker.attributes.full_name === name;
     });
@@ -101,7 +101,7 @@ class PhoneCanvas extends React.Component {
 
     const identity = this.isValidPhoneNumber(this.state.to)
       ? this.state.to
-      : this.getWorkerByFriendlyName(this.state.to);
+      : this.getCallerIdByFriendlyName(this.state.to);
 
     this.props.phoneControlManager
       .create(identity)

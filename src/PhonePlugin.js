@@ -23,14 +23,14 @@ export default class PhonePlugin extends FlexPlugin {
 
   init(flex, manager) {
     const runtimeDomain = manager.serviceConfiguration.runtime_domain;
-    const identity = manager.store.getState().flex.worker.attributes.contact_uri.replace('client:', '');
+    const contactUri = manager.store.getState().flex.worker.attributes.contact_uri;
     const fullName = manager.store.getState().flex.worker.attributes.full_name;
     const token = manager.store.getState().flex.session.ssoTokenPayload.token;
 
     const phoneControlManager = new PhoneControlManager(
       runtimeDomain,
       token,
-      identity,
+      contactUri,
       fullName
     );
 
@@ -42,7 +42,7 @@ export default class PhonePlugin extends FlexPlugin {
       <flex.View name="phone-view" key="phone-view">
         <PhoneCanvas
           key="dialpad-view"
-          identity={identity}
+          contactUri={contactUri}
           insightsClient={manager.insightsClient}
           phoneControlManager={phoneControlManager}
         />

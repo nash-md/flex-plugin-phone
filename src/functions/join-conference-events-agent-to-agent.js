@@ -44,7 +44,7 @@ const createTask = (client, context, taskSid, to, from, name) => {
         direction: "outbound",
         name: name,
         from: from,
-        contact_uri: `client:${to}`,
+        contactUri: to,
         autoAnswer: false,
         parentTaskSid: taskSid
       }),

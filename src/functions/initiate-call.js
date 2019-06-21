@@ -26,12 +26,12 @@ exports.handler = TokenValidator(function(context, event, callback) {
         direction: "outbound",
         name: event.Name,
         from: event.From,
-        contact_uri: `client:${event.From}`,
+        contactUri: event.From,
         autoAnswer: true
       }),
       workflowSid: context.TWILIO_WORKFLOW_SID,
       taskChannel: "custom1",
-      timeout: 300
+      timeout: 30
     })
     .then(task => {
       response.setBody({ sid: task.sid });
