@@ -6,6 +6,8 @@ This plug-in adds an icon to the side navigation bar which will open a phone. Wh
 
 The phone supports calling a phone number and internal agent-to-agent calls within the same Flex instance.
 
+This plug-in was developed tested with Flex release `1.10`.
+
 This application is provided as-is. Twilio does not officially support it.
 
 ## Setup
