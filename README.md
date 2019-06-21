@@ -22,6 +22,7 @@ The function paths must match the function file names.
 Note the below functions need to have the Access Control checkbox, Check for valid Twilio signature unchecked.
 
 Flex Phone Initiate Call (/initiate-call)
+
 Flex Dialpad Hold Call (/hold-call)
 
 In the Function Configuration tab you will need to make your credentials available in your Function code by checking the `Enable ACCOUNT_SID and AUTH_TOKEN` option. Additionally, you will need to configure three environmental variables:
@@ -35,7 +36,7 @@ You will need to add the NPM package, `twilio-flex-token-validator`, as a Depend
 Task Router
 In the TaskRouter -> Task Channels, please verify that channel `custom1` exists. If not, please create it.
 
-Within your Workflow add a routing step with the expression `task.contact_uri == worker.contact_uri` to ensure the task for the outbound call is routed to the agent only who initiated the call.
+Within your Workflow add a routing step with the expression `task.contactUri == worker.contact_uri` to ensure the task for the outbound call is routed to the agent only who initiated the call.
 
 ![TaskRouter Worker Expression](flex-phone-agent-to-agent-worker-expression.png)
 
